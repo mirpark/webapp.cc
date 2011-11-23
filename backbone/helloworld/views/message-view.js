@@ -4,7 +4,7 @@
 			this.messages = new Collections.Message;
 			this.render();
 		},
-		template:"<div id='message-view'></div>",
+		template: "<div id='message-view'></div>",
 		render: function() {
 			$(this.el).html(this.template);
 

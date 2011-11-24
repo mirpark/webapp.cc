@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Table View - jQTouch</title>
+        <style type="text/css" media="screen">@import "../libs/jqtouch.css";</style>
+        <style type="text/css" media="screen">@import "../themes/apple/theme.css";</style>
+        <script src="../libs/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../libs/jqtouch.js" type="application/x-javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            var jQT = $.jQTouch({
+                icon: 'icon.png',
+                startupScreen: 'startup.png'
+            });
+        </script>
+    </head>
+    <body>
+        <div id="jqt">
+            <div id="home" selected="true" class="">
+                <div class="toolbar">
+                    <h1>Root View</h1>
+                </div>
+                <form>
+					<ul class="rounded">
+						<li class="arrow"><a href="#detail">Item</a></li>
+						<li class="arrow"><a href="#detail">Item 2</a></li>
+						<li class="arrow"><a href="#detail">Item 3</a></li>
+					</ul>
+                </form>
+            </div>
+            <div id="detail" class="edit">
+	            <div class="toolbar">
+                    <h1>Detail View</h1>
+                    <a href="#" class="button goback">Back</a>
+                </div>
+                <form>
+                    <ul class="rounded">
+                        <li>Detail</li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

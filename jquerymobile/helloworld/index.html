@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Hello World - JQM</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+</head> 
+<body> 
+
+<!-- normal page -->
+<div data-role="page" id="root">
+
+	<div data-role="header">
+		<h1>Hello World</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<p>Hello World</p>		
+	</div><!-- /content -->
+	
+	<p><a href="#popup"data-role="button" data-rel="dialog" data-transition="pop">Show page "popup" (as a dialog)</a></p>
+
+</div><!-- /page -->
+
+<!-- popup -->
+<div data-role="page" id="popup">
+
+	<div data-role="header" data-theme="e">
+		<h1>Popup Dialog</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="d">
+		<p>Hello World</p>		
+		<p><a href="#root" data-rel="back" data-role="button" data-inline="true" data-icon="back">Back</a></p>	
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page popup -->
+
+</body>
+</html>

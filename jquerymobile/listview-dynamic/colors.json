@@ -1,0 +1,26 @@
+{
+	"name": "Colors",
+	"items": [
+		{
+			"name": "Blue"
+		},
+		{
+			"name": "Green"
+		},
+		{
+			"name": "Orange"
+		},
+		{
+			"name": "Purple"
+		},
+		{
+			"name": "Red"
+		},
+		{
+			"name": "Yellow"
+		},
+		{
+			"name": "Violet"
+		}
+	]
+}

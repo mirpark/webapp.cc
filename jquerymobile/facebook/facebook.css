@@ -50,34 +50,27 @@
 		background:#FFFFFF;
 	}
 	
-	#sidearea {
+/*	#sidearea {
 		width:40%;
 	}
-	
-	#sidearea .ui-body-c, .ui-btn-up-c, .ui-btn-hover-c {
-		text-shadow:none;
-		border:none;
-	}
-	
-	#sidearea a.ui-link-inherit, .ui-input-text {
+*/	
+	#sidebar-header a.ui-link-inherit, .ui-input-text {
 		color:#AAB2C0;
 	}
 	
-	
-	#sidearea .ui-btn-inner  {
+	#sidebar .ui-body-c, .ui-btn-up-c, .ui-btn-hover-c {
+		text-shadow:none;
+		border:none;
+	}
+
+	#sidebar .ui-btn-inner  {
 		padding: 2px 0.7em 1px 0.7em;
 	}
 	
-	#sidearea .ui-li-divider {
+	#sidebar .ui-li-divider {
 		padding: 4px 0.7em 5px 0.7em;
 	}
-		
-	
-/*	#page .ui-grid-a {
-		padding-top:5px;
-	}
-*/	
-	
+
 	#header .ui-block-a {
 		padding-top:5px;
 		padding-left:8px;

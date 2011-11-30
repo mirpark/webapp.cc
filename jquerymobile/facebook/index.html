@@ -12,6 +12,7 @@
 	<script type="text/javascript" src="http://ragingwind.github.com/js/jquery/jquery.url.js"></script>
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 	<script type="text/javascript" src="jquery.mobile.router.js" charset="utf-8"></script>
+	<script type="text/javascript" src="facebook-data.js" charset="utf-8"></script>
 	<!-- Local -->
 	<script type="text/javascript" charset="utf-8">
 		function resizePage() {
@@ -62,33 +63,35 @@
 		<div id="navigation" data-role="page">
 			<!-- Sidearea start -->
 			<div id="sidearea" data-role="collapsible" data-collapsed="false">
-				<ul data-role="listview">
+				<ul id="sidebar" data-role="listview">
 					<li id='sidebar-header'>
 						<input type="search" name="search" id="search" value="" placeholder="Search" />
-						</li>
-					<li><a href="#">Ragingwind</a></li>						
-					<li data-role="list-divider">FAVORITES</li>
-					<li><a href="#">News Feed</a></li>
-					<li><a href="#">Messages</a></li>
-					<li><a href="#">Nearby</a></li>
-					<li><a href="#">Events</a></li>
-					<li><a href="#">Friends</a></li>
-					<li data-role="list-divider">LISTS</li>
-					<li><a href="#">Close Friends</a></li>
-					<li><a href="#">Subscriptions</a></li>
-					<li><a href="#">Faimly</a></li>
-					<li><a href="#">Bombang</a></li>
-					<li><a href="#">See All Lists</a></li>
-					<li data-role="list-divider">GROUPS</li>
-					<li><a href="#">Messages</a></li>
-					<li data-role="list-divider">APPS</li>
-					<li><a href="#">Messages</a></li>
-					<li data-role="list-divider"></li>
-					<li><a href="#">Account Setting</a></li>
-					<li><a href="#">Privacy Setting</a></li>
-					<li><a href="#">Help Center</a></li>
-					<li><a href="#">Log Out</a></li>
-					<li><a href="#">English (US) . Desktop Site Facebook c 2011</a></li>
+					</li>
+					
+					<!-- <li><a href="#">Ragingwind</a></li>						
+										<li data-role="list-divider">FAVORITES</li>
+										<li><a href="#">News Feed</a></li>
+										<li><a href="#">Messages</a></li>
+										<li><a href="#">Nearby</a></li>
+										<li><a href="#">Events</a></li>
+										<li><a href="#">Friends</a></li>
+										<li data-role="list-divider">LISTS</li>
+										<li><a href="#">Close Friends</a></li>
+										<li><a href="#">Subscriptions</a></li>
+										<li><a href="#">Faimly</a></li>
+										<li><a href="#">Bombang</a></li>
+										<li><a href="#">See All Lists</a></li>
+										<li data-role="list-divider">GROUPS</li>
+										<li><a href="#">Messages</a></li>
+										<li data-role="list-divider">APPS</li>
+										<li><a href="#">Messages</a></li>
+										<li data-role="list-divider"></li>
+										<li><a href="#">Account Setting</a></li>
+										<li><a href="#">Privacy Setting</a></li>
+										<li><a href="#">Help Center</a></li>
+										<li><a href="#">Log Out</a></li>
+										<li><a href="#">English (US) . Desktop Site Facebook c 2011</a></li> -->
+					
 				</ul>
 			</div>
 			<!-- Sidearea end -->
@@ -163,11 +166,11 @@
 	<!-- ib start -->
 	<div class="ib">
 		<!-- Profile picture -->
-		<i class="img l profpic" style="background-image: url('http://profile.ak.fbcdn.net/hprofile-ak-snc4/70835_100001703823282_4114566_q.jpg');background-repeat:no-repeat;background-size:100% 100%;width:40px;height:40px;"></i>
+		<i class="img l profpic" style="background-image: url('${actor.profpic}');background-repeat:no-repeat;background-size:100% 100%;width:40px;height:40px;"></i>
 		<!-- c Start -->
 		<div class="c">
 			<!-- Message start -->
-			<div class="msg"><strong class="actor">${actor}</strong><br>${$index} ${msg}</div>
+			<div class="msg"><strong class="actor">${actor.name}</strong><br>${msg}</div>
 			<!-- Message end -->
 			
 			<!-- Attachment start -->
@@ -221,27 +224,5 @@
 </script>
 
 <script type="text/javascript">
-    var movies = [
-        { 
-			actor:"ragingwind",
-			msg: "사람사는 세상", 
-			attachment:{
-				img:"http://photos-h.ak.fbcdn.net/hphotos-ak-ash4/379535_254250981299228_100001429836761_723937_227462233_s.jpg", 
-				desc:"baby"
-			}, 
-			action: "12 Hours age",
-			like:9,
-			comment:10
-		},
-        { 
-			actor:"ragingwind",
-			msg: "Eyes Wide Shut", desc:"baby", action: "1999" },
-        { 
-			actor:"ragingwind",
-			msg: "The Inheritance", desc:"baby", action: "1976" }
-    ];
-
-    // Render the template with the movies data and insert
-    // the rendered HTML under the "movieList" element
-    $( "#facebookStoryTmpl" ).tmpl( movies ).appendTo( "#stories" );
+    $( "#facebookStoryTmpl" ).tmpl(facebook_newsfeeds).appendTo( "#stories" );
 </script>

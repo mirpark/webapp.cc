@@ -1,0 +1,247 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Dynamic Listview - JQM</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.css" />
+	<link rel="stylesheet" href="facebook.css" />
+	<!-- JQM -->
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.js"></script>
+	<script type="text/javascript" src="http://ragingwind.github.com/js/jquery/jquery.url.js"></script>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+	<script type="text/javascript" src="jquery.mobile.router.js" charset="utf-8"></script>
+	<!-- Local -->
+	<script type="text/javascript" charset="utf-8">
+		function resizePage() {
+			$("#page").width($(window).width() - 260);
+		}
+		
+		$( 'div' ).live( 'pageshow',function(event, ui){
+		  // console.log( 'This page was just hidden:', ui.prevPage, ui.nextPage, ui);
+		});
+		
+		$( '#navigation' ).live( 'updatelayout',function(event, data){
+			console.log("update layout");
+			// resizePage();
+		});
+		
+		$( window ).bind( "orientationchange", function( event ) {
+			// resizePage();
+		});
+		
+	$(window).ready(function() {
+		var routes = {
+			"sidebar":function(r) {
+				var query = r.url.attr("query");
+				if (query === "toggle")
+					$("#sidearea").toggle();
+					if ($("#page").offset().left === 0) {
+						$("#page").offset({left:260})
+						// resizePage();
+					}
+					else { 
+						$("#page").offset({left:0});
+						// $("#page").width($(window).width());
+					}
+						
+				// else (query === "show")
+				// 	("#sidebar").show();
+
+			},
+			"1":function() {}
+		}
+		
+		$.router(routes);		
+	})
+	
+	</script>
+	</head>
+	<body>
+		<div id="navigation" data-role="page">
+			<!-- Sidearea start -->
+			<div id="sidearea" data-role="collapsible" data-collapsed="false">
+				<ul data-role="listview">
+					<li id='sidebar-header'>
+						<input type="search" name="search" id="search" value="" placeholder="Search" />
+						</li>
+					<li><a href="#">Ragingwind</a></li>						
+					<li data-role="list-divider">FAVORITES</li>
+					<li><a href="#">News Feed</a></li>
+					<li><a href="#">Messages</a></li>
+					<li><a href="#">Nearby</a></li>
+					<li><a href="#">Events</a></li>
+					<li><a href="#">Friends</a></li>
+					<li data-role="list-divider">LISTS</li>
+					<li><a href="#">Close Friends</a></li>
+					<li><a href="#">Subscriptions</a></li>
+					<li><a href="#">Faimly</a></li>
+					<li><a href="#">Bombang</a></li>
+					<li><a href="#">See All Lists</a></li>
+					<li data-role="list-divider">GROUPS</li>
+					<li><a href="#">Messages</a></li>
+					<li data-role="list-divider">APPS</li>
+					<li><a href="#">Messages</a></li>
+					<li data-role="list-divider"></li>
+					<li><a href="#">Account Setting</a></li>
+					<li><a href="#">Privacy Setting</a></li>
+					<li><a href="#">Help Center</a></li>
+					<li><a href="#">Log Out</a></li>
+					<li><a href="#">English (US) . Desktop Site Facebook c 2011</a></li>
+				</ul>
+			</div>
+			<!-- Sidearea end -->
+			
+			<!-- Page start -->
+			<div id="page" data-role="content" style="background-color:red">
+				<!-- Header of page start -->
+				<div id='header' data-role="header">
+					<div class="ui-grid-b">
+						<div class="ui-block-a">
+							<a href="#sidebar?toggle" data-role="content">
+							<i class="img touched_hide" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y8/r/NwLTcDwF0zP.png');background-repeat:no-repeat;background-size:100% 100%;width:24px;height:21px;"></i>
+							</a>
+						</div>
+						<div class="ui-block-b" style="text-align:center">
+							<a href="#sidebar?toggle">
+							<i class="img touched_hide unlit" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yT/r/vhsaeKG83CT.png');background-repeat:no-repeat;background-size:100% 100%;width:30px;height:26px;"></i>
+							</a>
+							<a href="#sidebar?toggle">
+							<i class="img touched_hide unlit" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y7/r/G-1wLc9XfLI.png');background-repeat:no-repeat;background-size:100% 100%;width:30px;height:26px;"></i>
+							</a>
+							<a href="#sidebar?toggle">
+							<i class="img touched_hide unlit" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yn/r/UfNyQ6vcpeM.png');background-repeat:no-repeat;background-size:100% 100%;width:30px;height:26px;"></i>
+							</a>
+						</div>
+						<div class="ui-block-c"></div>
+					</div>	
+				</div>
+				<!-- Header of page end -->
+				
+				<!-- Content start -->
+				<div id="root">
+					<!-- Composer buttons at top  -->					
+					<div id='composer' class="ui-grid-b">
+						<div class="ui-block-a">
+						<a href="index.html" data-role="button">
+							<i class="img" style="margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yz/r/StEh3RhPvjk.gif');background-repeat:no-repeat;background-size:100% 100%;width:16px;height:16px;"></i>
+							Photo
+						</a>
+						</div>
+						<div class="ui-block-b">
+						<a href="index.html" data-role="button">
+							<i class="img" style="margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/ceZAuGCYnWY.png');background-repeat:no-repeat;background-size:100% 100%;width:14px;height:16px;"></i>
+							Status
+						</a>
+						</div>
+						<div class="ui-block-c">
+						<a href="index.html" data-role="button">
+							<i class="img" style="margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yE/r/mxAh2y1VRTc.png');background-repeat:no-repeat;background-size:100% 100%;width:15px;height:16px;"></i>Check In
+						</a>
+						</div>
+					</div>
+					<!-- Stories -->
+					<div id="newsfeed-stream">
+						<ul id='stories' data-role="listview">
+						</ul>
+					</div>
+				</div>
+				<!-- Content end -->
+		</div>
+		<!-- Page end -->
+	</body>
+</html>
+
+<!-- Templates for facebook -->
+<script id="facebookStoryTmpl" type="text/x-jquery-tmpl">
+	<li>
+	<!-- Story start -->
+	<div class="story">
+	<!-- Highlights mark -->
+	<i class="img highlight" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yV/r/SpHDR1gTsSA.png');background-repeat:no-repeat;background-size:100% 100%;width:23px;height:23px;"></i>
+	<!-- ib start -->
+	<div class="ib">
+		<!-- Profile picture -->
+		<i class="img l profpic" style="background-image: url('http://profile.ak.fbcdn.net/hprofile-ak-snc4/70835_100001703823282_4114566_q.jpg');background-repeat:no-repeat;background-size:100% 100%;width:40px;height:40px;"></i>
+		<!-- c Start -->
+		<div class="c">
+			<!-- Message start -->
+			<div class="msg"><strong class="actor">${actor}</strong><br>${$index} ${msg}</div>
+			<!-- Message end -->
+			
+			<!-- Attachment start -->
+			{{if attachment}}
+			<div class="ib attachment" style='overflow:auto;'>
+				<a class="l" href=""><i class="img" style="width: 73px;height: 130px;background-image: url('${attachment.img}');background-repeat:no-repeat;background-size:100% 100%;width:73px;height:130px;"></i></a>
+				<div class="desc c mfss" style="display: table-cell;">
+					<span>${attachment.desc}</span>
+				</div>
+			</div>
+			{{/if}}
+			<!-- Attachment end -->
+			
+			<!-- Action start -->
+			<div class="actions"><span class="mfss fcg"><abbr>${action}</abbr></span></div>
+			<!-- Action end -->
+			
+			<!-- ufi start  -->
+			<a class="miniUfiWrap">
+				<div class="miniUfiNub">
+					<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yt/r/2RquakQwcYs.png');background-repeat:no-repeat;background-size:100% 100%;width:11px;height:14px;"></i>
+				</div>
+				<span class="miniUfi mfss fcl">
+					{{if like}}
+					<span class="like_def">
+						<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yj/r/frl7jyXL3H9.png');background-repeat:no-repeat;background-size:100% 100%;width:13px;height:15px;"></i>
+						${like} person
+					</span>
+					{{/if}}
+					{{if comment}}
+					<span class="cmt_def">
+						<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y0/r/FSdP8UVPlLF.png');background-repeat:no-repeat;background-size:100% 100%;width:12px;height:16px;"></i>
+						${comment} comments
+					</span>
+					{{/if}}					
+				</span>
+			</a>
+			<!-- ufi end -->
+			</div>
+		</div>
+		<!-- c End -->
+		<div class="clear"></div>
+		<div class="flyoutIcon">
+			<i class="img touched_hide" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yp/r/VwcSvxHE0mt.png');background-repeat:no-repeat;background-size:100% 100%;width:24px;height:26px;"></i>
+		</div>
+	</div>
+	<!-- ib end -->
+	</div>
+	<!-- Story end -->
+	</li>
+</script>
+
+<script type="text/javascript">
+    var movies = [
+        { 
+			actor:"ragingwind",
+			msg: "사람사는 세상", 
+			attachment:{
+				img:"http://photos-h.ak.fbcdn.net/hphotos-ak-ash4/379535_254250981299228_100001429836761_723937_227462233_s.jpg", 
+				desc:"baby"
+			}, 
+			action: "12 Hours age",
+			like:9,
+			comment:10
+		},
+        { 
+			actor:"ragingwind",
+			msg: "Eyes Wide Shut", desc:"baby", action: "1999" },
+        { 
+			actor:"ragingwind",
+			msg: "The Inheritance", desc:"baby", action: "1976" }
+    ];
+
+    // Render the template with the movies data and insert
+    // the rendered HTML under the "movieList" element
+    $( "#facebookStoryTmpl" ).tmpl( movies ).appendTo( "#stories" );
+</script>

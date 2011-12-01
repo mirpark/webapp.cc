@@ -35,6 +35,42 @@
 			// window.deh = document.documentElement.offsetHeight;
 		});
 		
+		var routes = {
+			before:function(r) {
+				console.log("routes.before");
+			},
+			after:function(r) {
+				var p = r.url.param();
+				console.log("routes.after", p);
+				if (p.soft && p.soft == "sidearea")
+					routes.toogleSidearea();
+			},
+			toogleSidearea:function() {
+				$("#sidearea").toggle();
+				var page = $("#page");
+				if (page.offset().left === 0) {
+					page.offset({left:260})
+						.height("1441px")
+						.css("min-height", "")
+						.css("overflow", "hidden")
+					$("#navigation").css("overflow", "hidden");
+				}
+				else { 
+					page.css("min-height", "1441px")
+						.css("height", "")
+						.css("left", "")
+						.css("overflow-y", "visible")
+					$("#navigation").css("overflow", "");
+				}
+				
+			},
+			newsfeed:function(r) {
+				console.log("newsfeed", r)
+			}
+		}
+		
+		$.router(routes);
+		
 	$(window).ready(function() {
 		// $("#navigation").css("min-height", "");
 		$("#navigation").css("height", "1441px");
@@ -46,45 +82,9 @@
 		
 		console.log("ddoh", document.documentElement.offsetHeight);
 		
-		$.mobile.listview.prototype.options.headerTheme = "facebook";
-		var routes = {
-			"sidebar":function(r) {
-				var query = r.url.attr("query");
-				if (query === "toggle")
-					$("#sidearea").toggle();
-					if ($("#page").offset().left === 0) {
-						$("#page").offset({left:260})
-						// resizePage();
-						// console.log("toggle 1", document.documentElement.offsetHeight);
-						// window.deh = document.documentElement.offsetHeight;
-						// document.documentElement.offsetHeight = $(window).height();
-						// console.log("toggle 2", document.documentElement.offsetHeight);
-						$("#page").height("1441px");
-						$("#page").css("min-height", "");
-						$("#page").css("overflow", "hidden");
-						$("#navigation").css("overflow", "hidden");
-					}
-					else { 
-						$("#page").css("min-height", "1441px");
-						$("#page").css("height", "");
-						$("#page").css("left", "");
-						$("#page").css("overflow-y", "visible");
-						$("#navigation").css("overflow", "");
-						// console.log("untoggle 1", document.documentElement.offsetHeight);
-						// 						$("#page").offset({left:0});
-						// 						document.documentElement.offsetHeight = window.deh;
-						// 						console.log("untoggle 2", document.documentElement.offsetHeight);						 
-						// $("#page").width($(window).width());
-					}
-						
-				// else (query === "show")
-				// 	("#sidebar").show();
-
-			},
-			"1":function() {}
-		}
+		// $.mobile.listview.prototype.options.headerTheme = "facebook";
 		
-		$.router(routes);		
+		
 	})
 	
 	</script>
@@ -107,12 +107,12 @@
 				<div id='header' data-role="header" data-theme="c">
 					<div class="ui-grid-b">
 						<div class="ui-block-a">
-							<a href="#sidebar?toggle" data-role="content"><i class="img touched_hide toogle" style=";"></i></a>
+							<a href="#?soft=sidearea" id="toggle" data-role="content"><i class="img touched_hide toggle" style=";"></i></a>
 						</div>
 						<div class="ui-block-b">
-							<a href="#sidebar?toggle"><i class="img touched_hide unlit find-request"></i></a>
-							<a href="#sidebar?toggle"><i class="img touched_hide unlit messages"></i></a>
-							<a href="#sidebar?toggle"><i class="img touched_hide unlit notifications"></i></a>
+							<a href="#"><i class="img touched_hide unlit find-request"></i></a>
+							<a href="#"><i class="img touched_hide unlit messages"></i></a>
+							<a href="#"><i class="img touched_hide unlit notifications"></i></a>
 						</div>
 						<div class="ui-block-c"></div>
 					</div>	
@@ -123,9 +123,9 @@
 				<div id="root">
 					<!-- Composer buttons at top  -->					
 					<div id='composer' class="ui-grid-b">
-						<div class="ui-block-a"><a href="index.html" data-role="button"><i class="img photo"></i> Photo</a></div>
-						<div class="ui-block-b"><a href="index.html" data-role="button"><i class="img status"></i> Status</a></div>
-						<div class="ui-block-c"><a href="index.html" data-role="button"><i class="img checkin"></i> Check In</a></div>
+						<div class="ui-block-a"><a href="#" data-role="button"><i class="img photo"></i> Photo</a></div>
+						<div class="ui-block-b"><a href="#" data-role="button"><i class="img status"></i> Status</a></div>
+						<div class="ui-block-c"><a href="#" data-role="button"><i class="img checkin"></i> Check In</a></div>
 					</div>
 					<!-- Stories -->
 					<div id="newsfeed-stream">

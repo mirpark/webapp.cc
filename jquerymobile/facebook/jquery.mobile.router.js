@@ -9,10 +9,18 @@
 				target = url.attr("host"),
 				fn = routes[target];
 				
-				if (fn !== undefined)
-					fn({target:target, url:url});
+				if (routes.before)
+					routes.before({target:target, url:url, data:data});
+					
+				if (fn !== undefined) {
+					fn({target:target, url:url, data:data});
+				}
 				else 
-					console.error("hash router has no hander about " + url);
+					console.error("hash router has no hander about " + data.toPage);
+					
+				if (routes.after)
+					routes.after({target:target, url:url, data:data});
+				e.preventDefault();
 			}
 		});
 		

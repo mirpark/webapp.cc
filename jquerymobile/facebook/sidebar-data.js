@@ -2,7 +2,7 @@ var sidebars = [
     {
 		label:"Ragingwind",
 		icon:"images/profpic/ragingwind.jpg",
-		href:"#page"
+		href:"/#newsfeed"
 	},
 	// Divider, divider has a empty href
 	{

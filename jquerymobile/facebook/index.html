@@ -13,6 +13,7 @@
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 	<script type="text/javascript" src="jquery.mobile.router.js" charset="utf-8"></script>
 	<script type="text/javascript" src="facebook-data.js" charset="utf-8"></script>
+	<script type="text/javascript" src="sidebar-data.js" charset="utf-8"></script>
 	<!-- Local -->
 	<script type="text/javascript" charset="utf-8">
 		function resizePage() {
@@ -26,13 +27,26 @@
 		$( '#navigation' ).live( 'updatelayout',function(event, data){
 			console.log("update layout");
 			// resizePage();
+			// window.deh = document.documentElement.offsetHeight;
 		});
 		
 		$( window ).bind( "orientationchange", function( event ) {
 			// resizePage();
+			// window.deh = document.documentElement.offsetHeight;
 		});
 		
 	$(window).ready(function() {
+		// $("#navigation").css("min-height", "");
+		$("#navigation").css("height", "1441px");
+		
+		console.log("w", $(window).height(), "d", $(document).height());
+		// $("#page").width($(window).width());
+		// $(document).height($(window).height());
+		// $("#page").css("'min-height", "1441px");
+		
+		console.log("ddoh", document.documentElement.offsetHeight);
+		
+		$.mobile.listview.prototype.options.headerTheme = "facebook";
 		var routes = {
 			"sidebar":function(r) {
 				var query = r.url.attr("query");
@@ -41,9 +55,25 @@
 					if ($("#page").offset().left === 0) {
 						$("#page").offset({left:260})
 						// resizePage();
+						// console.log("toggle 1", document.documentElement.offsetHeight);
+						// window.deh = document.documentElement.offsetHeight;
+						// document.documentElement.offsetHeight = $(window).height();
+						// console.log("toggle 2", document.documentElement.offsetHeight);
+						$("#page").height("1441px");
+						$("#page").css("min-height", "");
+						$("#page").css("overflow", "hidden");
+						$("#navigation").css("overflow", "hidden");
 					}
 					else { 
-						$("#page").offset({left:0});
+						$("#page").css("min-height", "1441px");
+						$("#page").css("height", "");
+						$("#page").css("left", "");
+						$("#page").css("overflow-y", "visible");
+						$("#navigation").css("overflow", "");
+						// console.log("untoggle 1", document.documentElement.offsetHeight);
+						// 						$("#page").offset({left:0});
+						// 						document.documentElement.offsetHeight = window.deh;
+						// 						console.log("untoggle 2", document.documentElement.offsetHeight);						 
 						// $("#page").width($(window).width());
 					}
 						
@@ -60,62 +90,29 @@
 	</script>
 	</head>
 	<body>
-		<div id="navigation" data-role="page">
+		<div id="navigation" data-theme="c" style="height:1441px;min-height:100%;">
 			<!-- Sidearea start -->
-			<div id="sidearea" data-role="collapsible" data-collapsed="false">
+			<div id="sidearea" data-role="conents" style="display:none">
 				<ul id="sidebar" data-role="listview">
 					<li id='sidebar-header'>
 						<input type="search" name="search" id="search" value="" placeholder="Search" />
 					</li>
-					
-					<!-- <li><a href="#">Ragingwind</a></li>						
-										<li data-role="list-divider">FAVORITES</li>
-										<li><a href="#">News Feed</a></li>
-										<li><a href="#">Messages</a></li>
-										<li><a href="#">Nearby</a></li>
-										<li><a href="#">Events</a></li>
-										<li><a href="#">Friends</a></li>
-										<li data-role="list-divider">LISTS</li>
-										<li><a href="#">Close Friends</a></li>
-										<li><a href="#">Subscriptions</a></li>
-										<li><a href="#">Faimly</a></li>
-										<li><a href="#">Bombang</a></li>
-										<li><a href="#">See All Lists</a></li>
-										<li data-role="list-divider">GROUPS</li>
-										<li><a href="#">Messages</a></li>
-										<li data-role="list-divider">APPS</li>
-										<li><a href="#">Messages</a></li>
-										<li data-role="list-divider"></li>
-										<li><a href="#">Account Setting</a></li>
-										<li><a href="#">Privacy Setting</a></li>
-										<li><a href="#">Help Center</a></li>
-										<li><a href="#">Log Out</a></li>
-										<li><a href="#">English (US) . Desktop Site Facebook c 2011</a></li> -->
-					
 				</ul>
 			</div>
 			<!-- Sidearea end -->
 			
 			<!-- Page start -->
-			<div id="page" data-role="content" style="background-color:red">
+			<div id="page" data-theme="c" style='min-height:1441px;'>
 				<!-- Header of page start -->
-				<div id='header' data-role="header">
+				<div id='header' data-role="header" data-theme="c">
 					<div class="ui-grid-b">
 						<div class="ui-block-a">
-							<a href="#sidebar?toggle" data-role="content">
-							<i class="img touched_hide" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y8/r/NwLTcDwF0zP.png');background-repeat:no-repeat;background-size:100% 100%;width:24px;height:21px;"></i>
-							</a>
+							<a href="#sidebar?toggle" data-role="content"><i class="img touched_hide toogle" style=";"></i></a>
 						</div>
-						<div class="ui-block-b" style="text-align:center">
-							<a href="#sidebar?toggle">
-							<i class="img touched_hide unlit" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yT/r/vhsaeKG83CT.png');background-repeat:no-repeat;background-size:100% 100%;width:30px;height:26px;"></i>
-							</a>
-							<a href="#sidebar?toggle">
-							<i class="img touched_hide unlit" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y7/r/G-1wLc9XfLI.png');background-repeat:no-repeat;background-size:100% 100%;width:30px;height:26px;"></i>
-							</a>
-							<a href="#sidebar?toggle">
-							<i class="img touched_hide unlit" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yn/r/UfNyQ6vcpeM.png');background-repeat:no-repeat;background-size:100% 100%;width:30px;height:26px;"></i>
-							</a>
+						<div class="ui-block-b">
+							<a href="#sidebar?toggle"><i class="img touched_hide unlit find-request"></i></a>
+							<a href="#sidebar?toggle"><i class="img touched_hide unlit messages"></i></a>
+							<a href="#sidebar?toggle"><i class="img touched_hide unlit notifications"></i></a>
 						</div>
 						<div class="ui-block-c"></div>
 					</div>	
@@ -126,23 +123,9 @@
 				<div id="root">
 					<!-- Composer buttons at top  -->					
 					<div id='composer' class="ui-grid-b">
-						<div class="ui-block-a">
-						<a href="index.html" data-role="button">
-							<i class="img" style="margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yz/r/StEh3RhPvjk.gif');background-repeat:no-repeat;background-size:100% 100%;width:16px;height:16px;"></i>
-							Photo
-						</a>
-						</div>
-						<div class="ui-block-b">
-						<a href="index.html" data-role="button">
-							<i class="img" style="margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/ceZAuGCYnWY.png');background-repeat:no-repeat;background-size:100% 100%;width:14px;height:16px;"></i>
-							Status
-						</a>
-						</div>
-						<div class="ui-block-c">
-						<a href="index.html" data-role="button">
-							<i class="img" style="margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yE/r/mxAh2y1VRTc.png');background-repeat:no-repeat;background-size:100% 100%;width:15px;height:16px;"></i>Check In
-						</a>
-						</div>
+						<div class="ui-block-a"><a href="index.html" data-role="button"><i class="img photo"></i> Photo</a></div>
+						<div class="ui-block-b"><a href="index.html" data-role="button"><i class="img status"></i> Status</a></div>
+						<div class="ui-block-c"><a href="index.html" data-role="button"><i class="img checkin"></i> Check In</a></div>
 					</div>
 					<!-- Stories -->
 					<div id="newsfeed-stream">
@@ -155,6 +138,15 @@
 		<!-- Page end -->
 	</body>
 </html>
+
+<!-- Templates for facebook -->
+<script id="sidebarTmpl" type="text/x-jquery-tmpl">
+	{{if href}}
+	<li data-icon="false"><a href="#${href}"><img src="${icon}">${label}</a></li>
+	{{else}}
+	<li data-role="list-divider">${label}</li>
+	{{/if}}
+</script>
 
 <!-- Templates for facebook -->
 <script id="facebookStoryTmpl" type="text/x-jquery-tmpl">
@@ -225,4 +217,5 @@
 
 <script type="text/javascript">
     $( "#facebookStoryTmpl" ).tmpl(facebook_newsfeeds).appendTo( "#stories" );
+	$( "#sidebarTmpl" ).tmpl( sidebars ).appendTo("#sidebar");
 </script>

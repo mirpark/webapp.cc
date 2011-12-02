@@ -1,0 +1,50 @@
+<script type="text/javascript" charset="utf-8">
+	var sidebarArgs = [
+	    {
+			label:"Ragingwind",
+			icon:"images/profpic/ragingwind.jpg",
+			href:"/#newsfeed"
+		},
+		// Divider, divider has a empty href
+		{
+			label:"FAVORITES"
+		},
+		{
+			label:"News Feed",
+			icon:"images/icons/news-feed.png",
+			href:"#page"
+		},
+		{
+			label:"Messages",
+			icon:"images/icons/messages.png",
+			href:"#page"
+		},
+		{
+			label:"Nearby",
+			icon:"images/icons/nearby.png",
+			href:"#page"
+		},
+		{
+			label:"Friends",
+			icon:"images/icons/friends.png",
+			href:"#page"
+		},
+		// Divider, divider has a empty href
+		{
+			label:"LIST"
+		},
+		{
+			label:"Close Friends",
+			icon:"images/icons/close-friends.png",
+			href:"#page"
+		}	
+	];
+</script>
+
+<script id="sidebarTemplate" type="text/x-jquery-tmpl">
+	{{if href}}
+	<li data-icon="false"><a href="#${href}"><img src="${icon}">${label}</a></li>
+	{{else}}
+	<li data-role="list-divider">${label}</li>
+	{{/if}}
+</script>

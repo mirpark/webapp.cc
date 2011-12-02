@@ -3,6 +3,7 @@
 	$.router = function(routes) {
 		var routes = routes;
 		$(document).bind( "pagebeforechange", function( e, data ) {
+			console.log(data.toPage);
 			if ( typeof data.toPage === "string" ) {
 				var u = $.mobile.path.parseUrl( data.toPage ),			
 				url = $.url( u.hash.replace( /^#/, "" ) ),

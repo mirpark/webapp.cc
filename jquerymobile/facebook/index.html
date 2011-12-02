@@ -12,10 +12,15 @@
 	<script type="text/javascript" src="http://ragingwind.github.com/js/jquery/jquery.url.js"></script>
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 	<script type="text/javascript" src="jquery.mobile.router.js" charset="utf-8"></script>
-	<script type="text/javascript" src="facebook-data.js" charset="utf-8"></script>
-	<script type="text/javascript" src="sidebar-data.js" charset="utf-8"></script>
+	<script type="text/javascript" src="jquery.tmpl.get.js" charset="utf-8"></script>
+	
 	<!-- Local -->
 	<script type="text/javascript" charset="utf-8">
+		$("#viewport").live("pagebeforecreate", function(e) {
+			$.getTmpl("tmpl/sidebar.tmpl", "#sidebar", {id:"#sidebarTemplate", args:"sidebarArgs", remove:true});
+			$.getTmpl("tmpl/newsfeed.tmpl", "#stories", {id:"#newsfeedTemplate", args:"newsfeedArgs", remove:true});
+		});
+	
 		function resizePage() {
 			$("#page").width($(window).width() - 260);
 		}
@@ -24,7 +29,7 @@
 		  // console.log( 'This page was just hidden:', ui.prevPage, ui.nextPage, ui);
 		});
 		
-		$( '#navigation' ).live( 'updatelayout',function(event, data){
+		$( '#viewport' ).live( 'updatelayout',function(event, data){
 			console.log("update layout");
 			// resizePage();
 			// window.deh = document.documentElement.offsetHeight;
@@ -49,18 +54,21 @@
 				$("#sidearea").toggle();
 				var page = $("#page");
 				if (page.offset().left === 0) {
+					$("#viewport").css("overflow", "hidden");
 					page.offset({left:260})
 						.height("1441px")
 						.css("min-height", "")
+						// .width("300px");
 						.css("overflow", "hidden")
-					$("#navigation").css("overflow", "hidden");
+					$("#root").css("overflow", "hidden")
+					$("#viewport").css("overflow", "hidden");
 				}
 				else { 
 					page.css("min-height", "1441px")
 						.css("height", "")
 						.css("left", "")
 						.css("overflow-y", "visible")
-					$("#navigation").css("overflow", "");
+					$("#viewport").css("overflow-x", "visible");
 				}
 				
 			},
@@ -90,7 +98,7 @@
 	</script>
 	</head>
 	<body>
-		<div id="navigation" data-theme="c" style="height:1441px;min-height:100%;">
+		<div id="viewport" data-theme="c" style="height:1441px;min-height:100%;">
 			<!-- Sidearea start -->
 			<div id="sidearea" data-role="conents" style="display:none">
 				<ul id="sidebar" data-role="listview">
@@ -102,9 +110,10 @@
 			<!-- Sidearea end -->
 			
 			<!-- Page start -->
-			<div id="page" data-theme="c" style='min-height:1441px;'>
+			<div id="page" data-role="page" data-theme="c" style='min-height:1441px;'>
 				<!-- Header of page start -->
 				<div id='header' data-role="header" data-theme="c">
+					<!-- Titlebar on top -->
 					<div class="ui-grid-b">
 						<div class="ui-block-a">
 							<a href="#?soft=sidearea" id="toggle" data-role="content"><i class="img touched_hide toggle" style=";"></i></a>
@@ -115,18 +124,18 @@
 							<a href="#"><i class="img touched_hide unlit notifications"></i></a>
 						</div>
 						<div class="ui-block-c"></div>
-					</div>	
-				</div>
-				<!-- Header of page end -->
-				
-				<!-- Content start -->
-				<div id="root">
-					<!-- Composer buttons at top  -->					
+					</div>
+					<!-- Composer buttons on top  -->					
 					<div id='composer' class="ui-grid-b">
 						<div class="ui-block-a"><a href="#" data-role="button"><i class="img photo"></i> Photo</a></div>
 						<div class="ui-block-b"><a href="#" data-role="button"><i class="img status"></i> Status</a></div>
 						<div class="ui-block-c"><a href="#" data-role="button"><i class="img checkin"></i> Check In</a></div>
 					</div>
+				</div>
+				<!-- Header of page end -->
+				
+				<!-- Content start -->
+				<div id="root">
 					<!-- Stories -->
 					<div id="newsfeed-stream">
 						<ul id='stories' data-role="listview">
@@ -139,83 +148,24 @@
 	</body>
 </html>
 
+
+
 <!-- Templates for facebook -->
-<script id="sidebarTmpl" type="text/x-jquery-tmpl">
+
+<!-- Templates for facebook -->
+<!-- <script id="sidebarTmpl" type="text/x-jquery-tmpl">
 	{{if href}}
 	<li data-icon="false"><a href="#${href}"><img src="${icon}">${label}</a></li>
 	{{else}}
 	<li data-role="list-divider">${label}</li>
 	{{/if}}
-</script>
-
-<!-- Templates for facebook -->
-<script id="facebookStoryTmpl" type="text/x-jquery-tmpl">
-	<li>
-	<!-- Story start -->
-	<div class="story">
-	<!-- Highlights mark -->
-	<i class="img highlight" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yV/r/SpHDR1gTsSA.png');background-repeat:no-repeat;background-size:100% 100%;width:23px;height:23px;"></i>
-	<!-- ib start -->
-	<div class="ib">
-		<!-- Profile picture -->
-		<i class="img l profpic" style="background-image: url('${actor.profpic}');background-repeat:no-repeat;background-size:100% 100%;width:40px;height:40px;"></i>
-		<!-- c Start -->
-		<div class="c">
-			<!-- Message start -->
-			<div class="msg"><strong class="actor">${actor.name}</strong><br>${msg}</div>
-			<!-- Message end -->
-			
-			<!-- Attachment start -->
-			{{if attachment}}
-			<div class="ib attachment" style='overflow:auto;'>
-				<a class="l" href=""><i class="img" style="width: 73px;height: 130px;background-image: url('${attachment.img}');background-repeat:no-repeat;background-size:100% 100%;width:73px;height:130px;"></i></a>
-				<div class="desc c mfss" style="display: table-cell;">
-					<span>${attachment.desc}</span>
-				</div>
-			</div>
-			{{/if}}
-			<!-- Attachment end -->
-			
-			<!-- Action start -->
-			<div class="actions"><span class="mfss fcg"><abbr>${action}</abbr></span></div>
-			<!-- Action end -->
-			
-			<!-- ufi start  -->
-			<a class="miniUfiWrap">
-				<div class="miniUfiNub">
-					<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yt/r/2RquakQwcYs.png');background-repeat:no-repeat;background-size:100% 100%;width:11px;height:14px;"></i>
-				</div>
-				<span class="miniUfi mfss fcl">
-					{{if like}}
-					<span class="like_def">
-						<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yj/r/frl7jyXL3H9.png');background-repeat:no-repeat;background-size:100% 100%;width:13px;height:15px;"></i>
-						${like} person
-					</span>
-					{{/if}}
-					{{if comment}}
-					<span class="cmt_def">
-						<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y0/r/FSdP8UVPlLF.png');background-repeat:no-repeat;background-size:100% 100%;width:12px;height:16px;"></i>
-						${comment} comments
-					</span>
-					{{/if}}					
-				</span>
-			</a>
-			<!-- ufi end -->
-			</div>
-		</div>
-		<!-- c End -->
-		<div class="clear"></div>
-		<div class="flyoutIcon">
-			<i class="img touched_hide" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yp/r/VwcSvxHE0mt.png');background-repeat:no-repeat;background-size:100% 100%;width:24px;height:26px;"></i>
-		</div>
-	</div>
-	<!-- ib end -->
-	</div>
-	<!-- Story end -->
-	</li>
-</script>
+</script> -->
 
 <script type="text/javascript">
-    $( "#facebookStoryTmpl" ).tmpl(facebook_newsfeeds).appendTo( "#stories" );
-	$( "#sidebarTmpl" ).tmpl( sidebars ).appendTo("#sidebar");
+	
+		
+    // $( "#facebookStoryTmpl" ).tmpl(facebook_newsfeeds).appendTo( "#stories" );
+	
+	// $( "#sidebarTmpl" ).tmpl( sidebars ).appendTo("#sidebar");
+
 </script>

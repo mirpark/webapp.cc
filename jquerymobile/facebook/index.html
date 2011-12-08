@@ -4,7 +4,7 @@
 	<title>Facebook Mobile Page UI with JQM</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
-	<link rel="stylesheet" href="/jquerymobile/facebook/stylesheets/jquery.mobile.facebook.css" />
+	<link rel="stylesheet" href="/web-application.cc/jquerymobile/facebook/stylesheets/jquery.mobile.facebook.css" />
 	<!-- JQM -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.js"></script>
@@ -17,7 +17,7 @@
 	<script type="text/javascript" charset="utf-8">
 	var routes = {
 		_appendSidebar:function($sidearea) {
-			var sidebars = $.getTmpl("/jquerymobile/facebook/tmpl/sidebar.tmpl", 
+			var sidebars = $.getTmpl("/web-application.cc/jquerymobile/facebook/tmpl/sidebar.tmpl", 
 									{id:"#sidebarTemplate", args:"sidebarArgs", remove:true});
 									
 			var markup = "<ul class='sidebar' data-role='listview'>"
@@ -33,7 +33,7 @@
 		_appendTemplate:function($page, params) {
 			for (p in params) {
 				var selector = "." + params[p],
-					url = "/jquerymobile/facebook/tmpl/" + params[p] + ".tmpl",
+					url = "/web-application.cc/jquerymobile/facebook/tmpl/" + params[p] + ".tmpl",
 					id = "#" + params[p] + "Template";
 					
 				$page.find(selector).html( $.getTmpl(url, {id:id, remove:true}) );
@@ -41,7 +41,7 @@
 		},
 		_appendStream:function($content) {
 			var markup = "<div id='stream'><ul id='stories' data-role='listview'>";
-			var stream = $.getTmpl("/jquerymobile/facebook/tmpl/stream.tmpl", 
+			var stream = $.getTmpl("/web-application.cc/jquerymobile/facebook/tmpl/stream.tmpl", 
 								{id:"#streamTemplate", args:"streamArgs", remove:true});
 
 			for ( var i = 0, len = stream.length; i < len; i++ ) {

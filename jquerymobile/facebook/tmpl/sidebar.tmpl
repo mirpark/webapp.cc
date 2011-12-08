@@ -3,7 +3,7 @@
 	    {
 			label:"Ragingwind",
 			icon:"images/profpic/ragingwind.jpg",
-			href:"/#newsfeed"
+			href:"#user"
 		},
 		// Divider, divider has a empty href
 		{
@@ -12,39 +12,119 @@
 		{
 			label:"News Feed",
 			icon:"images/icons/news-feed.png",
-			href:"#page"
+			href:"#newsfeed"
 		},
 		{
 			label:"Messages",
 			icon:"images/icons/messages.png",
-			href:"#page"
+			href:"#"
 		},
 		{
 			label:"Nearby",
 			icon:"images/icons/nearby.png",
-			href:"#page"
+			href:"#"
 		},
 		{
 			label:"Friends",
 			icon:"images/icons/friends.png",
-			href:"#page"
+			href:"#"
 		},
 		// Divider, divider has a empty href
+		{
+			label:"GROUPS"
+		},
+		{
+			label:"My Group",
+			icon:"images/icons/group-1.png",
+			href:"#"
+		},
+		{
+			label:"See All Groups",
+			icon:"",
+			href:"#"
+		},
 		{
 			label:"LIST"
 		},
 		{
 			label:"Close Friends",
 			icon:"images/icons/close-friends.png",
-			href:"#page"
-		}	
+			href:"#"
+		},
+		{
+			label:"Subscriptions",
+			icon:"images/icons/subscriptions.png",
+			href:"#"
+		},
+		{
+			label:"Family",
+			icon:"images/icons/family.png",
+			href:"#"
+		},
+		{
+			label:"See All List",
+			icon:"",
+			href:"#"
+		},
+		{
+			label:"APPS"
+		},
+		{
+			label:"Photos",
+			icon:"images/icons/photos.png",
+			href:"#"
+		},
+		{
+			label:"Notes",
+			icon:"images/icons/notes.png",
+			href:"#"
+		},
+		{
+			label:"See All Apps",
+			icon:"",
+			href:"#"
+		},
+		{
+			label:"SETTING"
+		},
+		{
+			label:"Account Setting",
+			icon:"",
+			href:"#"
+		},
+		{
+			label:"Privacy Setting",
+			icon:"",
+			href:"#"
+		},
+		{
+			label:"Help Center",
+			icon:"",
+			href:"#"
+		},
+		{
+			label:"Log Out",
+			icon:"",
+			href:"#"
+		},
+		{
+			label:"English (US) · Facebook © 2011",
+			icon:"",
+			href:"#"
+		}
 	];
 </script>
 
 <script id="sidebarTemplate" type="text/x-jquery-tmpl">
-	{{if href}}
-	<li data-icon="false"><a href="#${href}"><img src="${icon}">${label}</a></li>
-	{{else}}
-	<li data-role="list-divider">${label}</li>
-	{{/if}}
+	<li {{if href}} data-icon="false" {{else}} data-role="list-divider" {{/if}}>
+		{{if href}}
+			{{if icon}}
+				<a href="${href}"><img src="${icon}">${label}</a>
+			{{else}}
+				<a href="${href}" class="ui-no-icon">${label}</a>
+			{{/if}}
+		{{else}}
+			${label}
+		{{/if}}
+	</li>
 </script>

@@ -1,5 +1,5 @@
 <script type="text/javascript" charset="utf-8">
-	var newsfeedArgs = [
+	var streamArgs = [
 	    { 
 			uid:0,
 			highlight:0,
@@ -7,14 +7,15 @@
 				name:"ragingwind",
 				profpic:"images/profpic/ragingwind.jpg"
 			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다."
+			msg: "jQuery Mobile(1.0, final, 이하 JQM)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 JQM의 구조를 따라 제작하였습니다. "
+			+ "#viewport 레이어를 top-level로 배치하고 내부에 #sidebar와 콘텐츠를 보여주는 #page레이어가 존재 합니다. #sidebar의 경우 일반적인 "
+			+ "static html이며 jQuery의 tmpl을 이용 합니다."
 			+ "아래와 같은 기능을 지원 합니다. jQuery에서 제공하는 플러그인을 사용했습니다. ",
 			attachment:{
 				img:"images/profpic/ragingwind.jpg", 
 				desc:"baby"
 			}, 
 			action: "12 Hours age",
-			like:9,
 			comment:10
 		},
 		{ 
@@ -196,9 +197,8 @@
 	];
 </script>
 
-<script id="newsfeedTemplate" type="text/x-jquery-tmpl">
+<script id="streamTemplate" type="text/x-jquery-tmpl">
 	<li>
-	<!-- Story start -->
 	<div class="story">
 	<!-- Highlights mark -->
 	<i class="img highlight" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yV/r/SpHDR1gTsSA.png');background-repeat:no-repeat;background-size:100% 100%;width:23px;height:23px;"></i>
@@ -258,6 +258,5 @@
 	</div>
 	<!-- ib end -->
 	</div>
-	<!-- Story end -->
-	</li>
+</li>
 </script>

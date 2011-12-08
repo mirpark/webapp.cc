@@ -1,171 +1,165 @@
 <!DOCTYPE html> 
 <html> 
 	<head> 
-	<title>Dynamic Listview - JQM</title>
+	<title>Facebook Mobile Page UI with JQM</title>
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.css" />
-	<link rel="stylesheet" href="facebook.css" />
+	<link rel="stylesheet" href="/jquerymobile/facebook/stylesheets/jquery.mobile.facebook.css" />
 	<!-- JQM -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.js"></script>
-	<script type="text/javascript" src="http://ragingwind.github.com/js/jquery/jquery.url.js"></script>
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
-	<script type="text/javascript" src="jquery.mobile.router.js" charset="utf-8"></script>
-	<script type="text/javascript" src="jquery.tmpl.get.js" charset="utf-8"></script>
-	
+	<!-- Libs -->
+	<script type="text/javascript" src="http://ragingwind.github.com/js/jquery/jquery.url.js"></script>
+	<script type="text/javascript" src="/jquerymobile/facebook/libs/jquery.mobile.simplerouter.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/jquerymobile/facebook/libs/jquery.tmpl.get.js" charset="utf-8"></script>
 	<!-- Local -->
 	<script type="text/javascript" charset="utf-8">
-		$("#viewport").live("pagebeforecreate", function(e) {
-			$.getTmpl("tmpl/sidebar.tmpl", "#sidebar", {id:"#sidebarTemplate", args:"sidebarArgs", remove:true});
-			$.getTmpl("tmpl/newsfeed.tmpl", "#stories", {id:"#newsfeedTemplate", args:"newsfeedArgs", remove:true});
-		});
-	
-		function resizePage() {
-			$("#page").width($(window).width() - 260);
-		}
-		
-		$( 'div' ).live( 'pageshow',function(event, ui){
-		  // console.log( 'This page was just hidden:', ui.prevPage, ui.nextPage, ui);
-		});
-		
-		$( '#viewport' ).live( 'updatelayout',function(event, data){
-			console.log("update layout");
-			// resizePage();
-			// window.deh = document.documentElement.offsetHeight;
-		});
-		
-		$( window ).bind( "orientationchange", function( event ) {
-			// resizePage();
-			// window.deh = document.documentElement.offsetHeight;
-		});
-		
-		var routes = {
-			before:function(r) {
-				console.log("routes.before");
-			},
-			after:function(r) {
-				var p = r.url.param();
-				console.log("routes.after", p);
-				if (p.soft && p.soft == "sidearea")
-					routes.toogleSidearea();
-			},
-			toogleSidearea:function() {
-				$("#sidearea").toggle();
-				var page = $("#page");
-				if (page.offset().left === 0) {
-					$("#viewport").css("overflow", "hidden");
-					page.offset({left:260})
-						.height("1441px")
-						.css("min-height", "")
-						// .width("300px");
-						.css("overflow", "hidden")
-					$("#root").css("overflow", "hidden")
-					$("#viewport").css("overflow", "hidden");
-				}
-				else { 
-					page.css("min-height", "1441px")
-						.css("height", "")
-						.css("left", "")
-						.css("overflow-y", "visible")
-					$("#viewport").css("overflow-x", "visible");
-				}
-				
-			},
-			newsfeed:function(r) {
-				console.log("newsfeed", r)
+	var routes = {
+		_appendSidebar:function($sidearea) {
+			var sidebars = $.getTmpl("/jquerymobile/facebook/tmpl/sidebar.tmpl", 
+									{id:"#sidebarTemplate", args:"sidebarArgs", remove:true});
+									
+			var markup = "<ul class='sidebar' data-role='listview'>"
+					+ "<li id='sidebar-header'>"
+					+ "<input type='search' name='search' id='search' value='' placeholder='Search'' />"
+					+ "</li>";
+						
+			for ( var i = 0, len = sidebars.length; i < len; i++ )
+				markup += sidebars[i].outerHTML;
+			markup += "</ul>";			
+			markup = markup.replace(location.hash, "#");
+			
+			$sidearea.html(markup);
+		},
+		_appendTemplate:function($page, params) {
+			for (p in params) {
+				var selector = "." + params[p],
+					url = "/jquerymobile/facebook/tmpl/" + params[p] + ".tmpl",
+					id = "#" + params[p] + "Template";
+					
+				$page.find(selector).html( $.getTmpl(url, {id:id, remove:true}) );
 			}
+		},
+		_appendStream:function($content) {
+			var markup = "<div id='stream'><ul id='stories' data-role='listview'>";
+			var stream = $.getTmpl("/jquerymobile/facebook/tmpl/stream.tmpl", 
+								{id:"#streamTemplate", args:"streamArgs", remove:true});
+
+			for ( var i = 0, len = stream.length; i < len; i++ ) {
+				markup += stream[i].outerHTML;
+			}
+			markup += "</ul></div>";
+			
+			$content.html(markup);	
+		},
+		_enhancePage:function($page, options, url) {
+			// enhance the page and listview
+			$page.page();
+			$page.find(":jqmData(role=listview)").listview();
+			options.dataUrl = url;
+			
+			var innnerPage = $page.find(".page");
+			if (innnerPage.hasClass("toggle-on"))
+				innnerPage.removeClass("toggle-on").addClass("toggle-off");
+
+			$.mobile.changePage($page, options);
+		},
+		pagechange:function(data) {
+			$page = $.mobile.activePage;
+			
+			// Hide sidearea
+			if ($page.find(".sidearea").is(":visible"))
+				routes.toggle();
+				
+			// Hack, It seems to be a defect. 
+			// Re-enhance widget in active page. Grid has lost style after 
+			// changed page with hash or revisit a same page.
+			$page.page("destroy").page();
+		},
+		toggle:function() {
+				var $page = $.mobile.activePage,
+					$sidearea = $page.find(".sidearea"),
+					$innnerPage = $page.find(".page");
+				
+				if ($sidearea.is(":visible") === false) {
+					$sidearea.show();
+					$innnerPage.removeClass("toggle-off").addClass("toggle-on");
+					$page.css("overflow", "hidden");
+				}
+				else {
+					$sidearea.hide();
+					$innnerPage.removeClass("toggle-on").addClass("toggle-off");
+					$page.css("overflow-x", "visible");
+				}
+		},
+		user:function(r, options) {
+			var $page = $("#user"), 
+				$content = $page.find(".root");
+
+			routes._appendSidebar($page.find(".sidearea"));
+			routes._appendTemplate($page, ["titlebar", "profileheader", "composer"]);
+			routes._appendStream($content);
+			routes._enhancePage($page, r.options, r.url);
+		},
+		newsfeed:function(r, options) {
+			var $page = $("#newsfeed"), 
+				$content = $page.find(".root");
+
+			routes._appendSidebar($page.find(".sidearea"));
+			routes._appendTemplate($page, ["titlebar", "composer"]);
+			routes._appendStream($content);
+			routes._enhancePage($page, r.options, r.url);
 		}
+	}
 		
-		$.router(routes);
-		
+	// Setup router
+	$.mobile.simplerouter(routes);
+	
 	$(window).ready(function() {
-		// $("#navigation").css("min-height", "");
-		$("#navigation").css("height", "1441px");
-		
-		console.log("w", $(window).height(), "d", $(document).height());
-		// $("#page").width($(window).width());
-		// $(document).height($(window).height());
-		// $("#page").css("'min-height", "1441px");
-		
-		console.log("ddoh", document.documentElement.offsetHeight);
-		
-		// $.mobile.listview.prototype.options.headerTheme = "facebook";
-		
-		
+		// Redirect to default page, #newsfeed
+		if (location.hash.length === 0)
+			$.mobile.changePage("#newsfeed");
 	})
 	
 	</script>
 	</head>
 	<body>
-		<div id="viewport" data-theme="c" style="height:1441px;min-height:100%;">
-			<!-- Sidearea start -->
-			<div id="sidearea" data-role="conents" style="display:none">
-				<ul id="sidebar" data-role="listview">
-					<li id='sidebar-header'>
-						<input type="search" name="search" id="search" value="" placeholder="Search" />
-					</li>
-				</ul>
+		<!-- Dummy page start -->
+		<div id="empty-page-for-redirect-to-other-page" data-role="page"></div>
+		<!-- Dummy page end  -->
+		
+		<!-- Newsfeed page start -->
+		<div id="newsfeed" data-theme="c" data-role="page" style="">
+			<div class="sidearea" style="display:none"></div>
+			<div class="page toggle-off" data-theme="c">
+				<div data-role="header" data-theme="c">
+					<div class="titlebar ui-grid-b"></div>
+				</div>
+				<div class="composer ui-grid-b"></div>
+				<div class="root" data-role="content">
+				</div>
 			</div>
-			<!-- Sidearea end -->
-			
-			<!-- Page start -->
-			<div id="page" data-role="page" data-theme="c" style='min-height:1441px;'>
-				<!-- Header of page start -->
-				<div id='header' data-role="header" data-theme="c">
-					<!-- Titlebar on top -->
-					<div class="ui-grid-b">
-						<div class="ui-block-a">
-							<a href="#?soft=sidearea" id="toggle" data-role="content"><i class="img touched_hide toggle" style=";"></i></a>
-						</div>
-						<div class="ui-block-b">
-							<a href="#"><i class="img touched_hide unlit find-request"></i></a>
-							<a href="#"><i class="img touched_hide unlit messages"></i></a>
-							<a href="#"><i class="img touched_hide unlit notifications"></i></a>
-						</div>
-						<div class="ui-block-c"></div>
-					</div>
-					<!-- Composer buttons on top  -->					
-					<div id='composer' class="ui-grid-b">
-						<div class="ui-block-a"><a href="#" data-role="button"><i class="img photo"></i> Photo</a></div>
-						<div class="ui-block-b"><a href="#" data-role="button"><i class="img status"></i> Status</a></div>
-						<div class="ui-block-c"><a href="#" data-role="button"><i class="img checkin"></i> Check In</a></div>
-					</div>
-				</div>
-				<!-- Header of page end -->
-				
-				<!-- Content start -->
-				<div id="root">
-					<!-- Stories -->
-					<div id="newsfeed-stream">
-						<ul id='stories' data-role="listview">
-						</ul>
-					</div>
-				</div>
-				<!-- Content end -->
 		</div>
-		<!-- Page end -->
+		<!-- Newsfeed page end -->
+
+		<!-- User page start -->
+		<div id="user" data-theme="c" data-role="page">
+			<div class="sidearea" style="display:none"></div>
+			<div class="page toggle-off" data-theme="c">
+				<div data-role="header" data-theme="c">
+					<div class="titlebar ui-grid-b"></div>
+				</div>
+				<div class="ui-grid-b nav">
+					<div class="ui-block-a">Wall</div>
+					<div class="ui-block-b touched">Info</div>
+					<div class="ui-block-c">Photo</div>
+				</div>
+				<div class="profileheader"></div>
+				<div class="composer ui-grid-b"></div>
+				<div class="root" data-role="content"></div>
+			</div>
+		</div>
+		<!-- User page end  -->
 	</body>
 </html>
-
-
-
-<!-- Templates for facebook -->
-
-<!-- Templates for facebook -->
-<!-- <script id="sidebarTmpl" type="text/x-jquery-tmpl">
-	{{if href}}
-	<li data-icon="false"><a href="#${href}"><img src="${icon}">${label}</a></li>
-	{{else}}
-	<li data-role="list-divider">${label}</li>
-	{{/if}}
-</script> -->
-
-<script type="text/javascript">
-	
-		
-    // $( "#facebookStoryTmpl" ).tmpl(facebook_newsfeeds).appendTo( "#stories" );
-	
-	// $( "#sidebarTmpl" ).tmpl( sidebars ).appendTo("#sidebar");
-
-</script>

@@ -1,0 +1,268 @@
+@import url(http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.css);
+@import url(jquery.mobile.mod.css);
+
+/* Screen */
+body {
+	overflow: no-scroll;
+	margin:0;
+	padding:0;
+}
+
+a:link {
+	text-decoration:none;
+}
+
+.clear {
+	clear: both;
+}
+
+/* Custom */
+.toggle-off {
+	min-height:1100px !important; 
+	overflow:hidden !important;
+	overflow-y:visible;
+	overflow-x:visible;
+}
+
+.toggle-on {
+	left:260px !important;
+	height:1100px !important;
+	overflow:hidden !important;
+}
+
+.sidearea {
+	min-height: 100%;
+	overflow: hidden;
+	position: absolute;
+	width:260px;
+	background: #32394A;
+}
+
+.page {
+	position:relative;
+}
+
+.page .toggle {
+	background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y8/r/NwLTcDwF0zP.png');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	width:24px;
+	height:21px;
+}
+
+.page .find-request {
+	background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yT/r/vhsaeKG83CT.png');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	width:30px;
+	height:26px;
+}
+
+.page .messages {
+	background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y7/r/G-1wLc9XfLI.png');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	width:30px;
+	height:26px;
+}
+
+.page .notifications {
+	background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yn/r/UfNyQ6vcpeM.png');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	width:30px;
+	height:26px;
+}
+
+.page .photo {
+	margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yz/r/StEh3RhPvjk.gif');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	width:16px;
+	height:16px;
+}
+
+.page .status {
+	margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yb/r/ceZAuGCYnWY.png');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	width:14px;
+	height:16px;
+}
+
+.page .checkin {
+	margin-top: 5px;background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yE/r/mxAh2y1VRTc.png');
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+	width:15px;
+	height:16px;
+}
+
+.root {
+	position:relative;
+	float:left;
+	background-color:white;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+}
+
+.nav .touched {
+	background: #D8DFEA;
+}
+
+.composer {
+	background-color: #F2F2F2;
+	border-color: #CCC;
+	border-bottom: 1px solid #CCC;
+	border-top: 1px solid #CCC;
+}
+
+/* Facebook Original */
+.img {
+	border:0px;display:inline-block;vertical-align:top;
+}
+
+.highlight {
+	left:0px;position:absolute;top:-1px;
+}
+
+.profpic {
+	background: #ECEFF5;
+}
+
+
+.ai {
+	position: relative;
+	vertical-align: top;
+}
+		
+.miniUfi {
+	white-space: nowrap;
+	padding: 4px 0 4px 9px;
+	background: #EDEFF4;
+	border-bottom: 1px solid #E5EAF1;
+	border-top: 1px solid #EDEFF4;
+	font-weight: bold;
+}
+
+.fcg {;
+	color:gray;
+}
+		
+.fcl {
+color: #3B5998;
+font-size: 12px;
+line-height: 15px;
+}
+
+.mfss {
+	line-height: 15px;
+	font-size: 12px;
+}
+
+.miniUfi span {
+	padding-right: 10px;
+}
+
+.miniUfiNub {
+	overflow: hidden;
+	height: 7px;
+	margin-bottom: 2px;
+	margin-left: 9px;
+	position: relative;
+}
+		
+.actions {
+margin: 6px 25px 3px 0;
+}
+
+.c {
+	display: table-cell;
+}
+
+.attachment {
+	margin: 6px 0;
+}
+
+		
+.flyoutIcon {
+	width: 24px;
+	height: 26px;
+	margin-top: -22px;
+	float: right;
+}
+
+.composer {
+	padding:0px;
+	margin:0px;
+	background:#FFF;
+}
+
+
+.actor {
+	color: #3B5998;
+}
+
+
+
+.ib {
+	position: relative;
+}
+
+.ib .l {
+	display: block;
+	float: left;
+	margin-right: 8px;
+}
+
+.apl {
+	padding: 8px 8px;
+}
+
+.profileHeader {
+	padding-bottom: 10px;
+}
+
+.profileHeader .pic {
+	-webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .35);
+	margin-right: 10px;
+	padding: 3px;
+	position: relative;
+}
+
+.acw {
+	background-color: white;
+}
+
+.acw {
+	border-color: #E9E9E9;
+}
+
+.img {
+	border: 0;
+	display: inline-block;
+	vertical-align: top;
+	border-image: initial;
+}
+
+.profileHeader .name {
+	color: #3E434C;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 21px;
+}
+
+.profileHeader .bylineItem {
+	margin-top: 5px;
+}
+
+.profileHeader .bylineItem .l {
+	margin-right: 5px;
+}
+
+.profileHeader .data {
+	height: 84px;
+	padding: 3px 0;
+	vertical-align: middle;
+}

@@ -10,9 +10,9 @@
 	<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.js"></script>
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
 	<!-- Libs -->
-	<script type="text/javascript" src="http://ragingwind.github.com/js/jquery/jquery.url.js"></script>
-	<script type="text/javascript" src="/jquerymobile/facebook/libs/jquery.mobile.simplerouter.js" charset="utf-8"></script>
-	<script type="text/javascript" src="/jquerymobile/facebook/libs/jquery.tmpl.get.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://ragingwind.github.com/libs/jquery/jquery.url.js"></script>
+	<script type="text/javascript" src="http://ragingwind.github.com/libs/jquerymobile/jquery.mobile.simplerouter.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://ragingwind.github.com/libs/jquery/jquery.tmpl.get.js" charset="utf-8"></script>
 	<!-- Local -->
 	<script type="text/javascript" charset="utf-8">
 	var routes = {
@@ -28,8 +28,6 @@
 			for ( var i = 0, len = sidebars.length; i < len; i++ )
 				markup += sidebars[i].outerHTML;
 			markup += "</ul>";			
-			markup = markup.replace(location.hash, "#");
-			
 			$sidearea.html(markup);
 		},
 		_appendTemplate:function($page, params) {

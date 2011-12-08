@@ -2,197 +2,120 @@
 	var streamArgs = [
 	    { 
 			uid:0,
-			highlight:0,
+			highlight:1,
 			actor:{
 				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
+				profpic:"https://twimg0-a.akamaihd.net/profile_images/1208984393/IMG_1193_reasonably_small.JPG"
 			},
-			msg: "jQuery Mobile(1.0, final, 이하 JQM)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 JQM의 구조를 따라 제작하였습니다. "
-			+ "#viewport 레이어를 top-level로 배치하고 내부에 #sidebar와 콘텐츠를 보여주는 #page레이어가 존재 합니다. #sidebar의 경우 일반적인 "
-			+ "static html이며 jQuery의 tmpl을 이용 합니다."
-			+ "아래와 같은 기능을 지원 합니다. jQuery에서 제공하는 플러그인을 사용했습니다. ",
+			msg: "jQuery Mobile(1.0 final, 이하 JQM)로 구현한 페이스북 모바일 페이지(http://m.facebook.com/)를 구현해본 예제입니다. 최대한 JQM을 사용하여 제작 하였습니다."
+				+ "User페이지와 Newsfeed페이지를 이동하는 예제이며 왼쪽 상단의 버튼을 통해서 Sidebar를 Toggle시키는 기능을 가지고 있습니다. 페이지 이동"
+				+ "은 Sidebar를 노출 시킨후에 메뉴를 선택하며 User, Newsfeed만 동작합니다. JQM의 가능성과 기능을 검사하기 위해서 제작되었습니다. "
+				+ "페이지 레이아웃와 위젯 사용 라우팅 그리고 네비게이션 부분을 구현하였습니다. 이해의 정도에 따라 미흡한 점이나 "
+				+ "성능상의 이슈가 있을 수 있습니다. 단순 참고만 하시기 바랍니다. 사용된 데이터는 임의로 작성된 데이터이며 tmpl을 이용하여 로딩됩니다.",
 			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
+				img:"images/attachments/jquery-logo.png", 
+				desc:"jQuery Logo"
 			}, 
 			action: "12 Hours age",
-			comment:10
+			ufi:{
+				comment:12
+			}
 		},
 		{ 
 			uid:1,
 			highlight:0,
 			actor:{
 				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
+				profpic:"https://twimg0-a.akamaihd.net/profile_images/1208984393/IMG_1193_reasonably_small.JPG"
 			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
+			msg: "소스는 Github에 있습니다.",
 			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
+				img:"https://a248.e.akamai.net/assets.github.com/images/modules/header/logov6-hover.svg?1315858591", 
+				desc:"GitHub http://j.mp/vFq4fu"
 			}, 
-			action: "12 Hours age",
-			like:9,
-			comment:10
+			action: "1 Hours age",
+			ufi:{
+				like:2,
+				comment:1
+			}
 		},
 		{ 
 			uid:2,
-			highlight:0,
+			highlight:1,
 			actor:{
 				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
+				profpic:"https://twimg0-a.akamaihd.net/profile_images/1208984393/IMG_1193_reasonably_small.JPG"
 			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
+			msg: "jQuery계열의 라이브러리만을 사용하였으며 추가로 제작된 plugin도 있습니다. 리스트는 다음과 같습니다. jquery.url, jquery.mobile.simplerouter, jquery.tmpl, jquery.tmpl.get",
 			action: "12 Hours age",
-			like:9,
-			comment:10
 		},
 		{ 
 			uid:3,
 			highlight:0,
 			actor:{
 				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
+				profpic:"https://twimg0-a.akamaihd.net/profile_images/1208984393/IMG_1193_reasonably_small.JPG"
 			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
+			msg: "JQM에서 Grid의 Refresh가 되지 않아 Page를 Destroy후 다시 Re-enhance하는 코드가 있습니다.",
 			action: "12 Hours age",
-			like:9,
-			comment:10
 		},
 		{ 
 			uid:4,
-			highlight:0,
+			highlight:1,
 			actor:{
 				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
+				profpic:"https://twimg0-a.akamaihd.net/profile_images/1208984393/IMG_1193_reasonably_small.JPG"
 			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
-			action: "12 Hours age",
-			like:9,
-			comment:10
+			msg: "페이스북 모바일 페이지의 일부 HTML, CSS 그리고 리소스를 사용하였습니다. JQM의 이해하는데 방해되는 페이스북의 코드는 tmpl 디렉토리 아래에 존재합니다.",
+			action: "24 Day ago",
+			ufi:{
+				like:100
+			}
 		},
 		{ 
 			uid:5,
-			highlight:0,
+			highlight:1,
 			actor:{
 				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
+				profpic:"https://twimg0-a.akamaihd.net/profile_images/1208984393/IMG_1193_reasonably_small.JPG"
 			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
+			msg: "Chrome 16.0.912.58 beta, iOS 시물레이터에서 테스트 되었으며 iOS 시물레이터에서 동작을 권장합니다.",
 			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
+				img:"images/attachments/ios-simulator.png", 
+				desc:"iOS Simulator에서 동작하는 모습"
+			},
 			action: "12 Hours age",
-			like:9,
-			comment:10
+			ufi:{
+				like:100,
+				comment:1
+			}
 		},
 		{ 
 			uid:6,
-			highlight:0,
+			highlight:1,
 			actor:{
 				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
+				profpic:"https://twimg0-a.akamaihd.net/profile_images/1208984393/IMG_1193_reasonably_small.JPG"
 			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
+			msg: "제작의도와는 다르게 동작할 수 있습니다.",
 			action: "12 Hours age",
-			like:9,
-			comment:10
+			ufi:{
+				like:1,
+				comment:1
+			}
 		},
 		{ 
-			uid:7,
+			uid:0,
 			highlight:0,
 			actor:{
 				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
+				profpic:"https://twimg0-a.akamaihd.net/profile_images/1208984393/IMG_1193_reasonably_small.JPG"
 			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
-			action: "12 Hours age",
-			like:9,
-			comment:10
-		},
-		{ 
-			uid:8,
-			highlight:0,
-			actor:{
-				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
-			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
-			action: "12 Hours age",
-			like:9,
-			comment:10
-		},
-		{ 
-			uid:9,
-			highlight:0,
-			actor:{
-				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
-			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
-			action: "12 Hours age",
-			like:9,
-			comment:10
-		},
-		{ 
-			uid:10,
-			highlight:0,
-			actor:{
-				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
-			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
-			action: "12 Hours age",
-			like:9,
-			comment:10
-		},
-		{ 
-			uid:11,
-			highlight:0,
-			actor:{
-				name:"ragingwind",
-				profpic:"images/profpic/ragingwind.jpg"
-			},
-			msg: "jQuery Mobile(1.0, final)로 구현한 facebook 모바일 페이지 예제입니다. 최대한 jQuery Mobile 구조를 따라 제작하였습니다.",
-			attachment:{
-				img:"images/profpic/ragingwind.jpg", 
-				desc:"baby"
-			}, 
-			action: "12 Hours age",
-			like:9,
-			comment:10
+			msg: "관련 문의는 @ragingwind, twitter로 해주세요.",
+			action: "1 Hours age",
+			ufi:{
+				like:1
+			}
 		}
 	];
 </script>
@@ -201,7 +124,9 @@
 	<li>
 	<div class="story">
 	<!-- Highlights mark -->
+	{{if highlight}}
 	<i class="img highlight" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yV/r/SpHDR1gTsSA.png');background-repeat:no-repeat;background-size:100% 100%;width:23px;height:23px;"></i>
+	{{/if}}
 	<!-- ib start -->
 	<div class="ib">
 		<!-- Profile picture -->
@@ -229,23 +154,25 @@
 			
 			<!-- ufi start  -->
 			<a class="miniUfiWrap">
+				{{if ufi}}
 				<div class="miniUfiNub">
 					<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yt/r/2RquakQwcYs.png');background-repeat:no-repeat;background-size:100% 100%;width:11px;height:14px;"></i>
 				</div>
 				<span class="miniUfi mfss fcl">
-					{{if like}}
+					{{if ufi.like}}
 					<span class="like_def">
 						<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/yj/r/frl7jyXL3H9.png');background-repeat:no-repeat;background-size:100% 100%;width:13px;height:15px;"></i>
-						${like} person
+						${ufi.like} person
 					</span>
 					{{/if}}
-					{{if comment}}
+					{{if ufi.comment}}
 					<span class="cmt_def">
 						<i class="img" style="background-image: url('http://static.ak.fbcdn.net/rsrc.php/v1/y0/r/FSdP8UVPlLF.png');background-repeat:no-repeat;background-size:100% 100%;width:12px;height:16px;"></i>
-						${comment} comments
+						${ufi.comment} comments
 					</span>
 					{{/if}}					
 				</span>
+				{{/if}}
 			</a>
 			<!-- ufi end -->
 			</div>

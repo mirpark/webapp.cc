@@ -1,0 +1,28 @@
+<div class="dialog">
+	<div class="contents">
+		<div class="top">
+{{#user}}		
+			<div class="left-column">
+				<img class="profile-photo" align="top" src="{{profile_image_url}}">
+			</div>
+			<div class="right-column">
+				<a href="#users/lookup/{{screen_name}}">
+					<div class="fullname">{{name}}</div>
+					<div class="username">@{{screen_name}}</div>
+				</a>
+			</div>
+{{/user}}
+		</div>
+		<div class="mid">
+			<div class="tweet">{{text}}</div>
+			<div class="source">{{created_at}} via {{{source}}}</div>
+		</div>
+		<div class="bottom-menu">
+			<ul>
+				<li>{{#retweeted}}{{retweet_count}} {{/retweeted}}{{^retweeted}}NO {{/retweeted}}Retweeted</li>
+				<li>{{^favorited}}NO {{/favorited}}Favorited</li>
+				<li>{{^truncated}}NO {{/truncated}}Truncated</li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -1,10 +1,32 @@
 # WebApp code-catalog
-This repo has a kind of samples of webapp. It's created using multiple webapp framework. Through samples of how to use the Framework to find out. All samples were written during the course of the study and survey. So there may be errors in the code.
+This codee-catalog has a samples of library and framewors that need to make a webapp. Through samples of how to use the library and framework to find out. All samples were written during the course of the study and survey. So there may be some defect in there.
 
 # Code-catalog
-## [Twitter - public timeline](http://ragingwind.github.com/webapp.cc/twitter/#statuses/public_timeline)
-Use the jquery, requirejs, backbonejs, hoganjs and bootstrap(little)
+## [Helloworld - backbone](http://ragingwind.github.com/webapp.cc/cc/helloworld-backbone/)
+Helloword. By
+* jquery.js
+* backbone.js
+* underscore.js
 
-## Facebook
-Use the jquery and jquerymobile
+## [Twitter - public timeline](http://ragingwind.github.com/webapp.cc/cc/twitter-publictimeline/#statuses/public_timeline)
+Twitter public timeline. By
+* jquery
+* backbone.js
+* underscore.js
+* hogan.js
+* bootstrap
+* require.js
+* text
+* order
 
+## [Facebook - mobile page](http://ragingwind.github.com/webapp.cc/cc/facebook-mobilepage/)
+Facebook mobile page. By
+* jquery
+ * jquery.tmpl
+ * jquery.tmpl.get
+ * jquery.url
+* jquery.mobile
+ * jquery.mobile.simplerouter
+
+# License
+Copyright © 2010 @ragingwind. All rights reserved. Use of this source code is governed by a [MIT](http://ragingwind.github.com/LICENSE/MIT)
